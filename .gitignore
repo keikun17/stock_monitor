@@ -14,3 +14,34 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
+# FROM https://github.com/github/gitignore/blob/master/Rails.gitignore
+# DATE : SEPT 30, 2014
+
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# TODO Comment out these rules if you are OK with secrets being uploaded to the repo
+config/initializers/secret_token.rb
+config/secrets.yml
+
+
+# ## Environment normalisation:
+/.bundle
+/vendor/bundle
+
+# # if using bower-rails ignore default bower_components path bower.json files
+/vendor/assets/bower_components
+*.bowerrc
+bower.json
