@@ -43,3 +43,10 @@ group :development, :test do
   gem 'spring'
 end
 
+#----------------------------------------------------------------------
+# Things above were from the default Rails 4.2.0.beta2 Gemfile
+#----------------------------------------------------------------------
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'bootstrap-generators'
+
