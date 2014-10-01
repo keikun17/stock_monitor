@@ -1,0 +1,30 @@
+.page-header
+  = link_to new_stock_field_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Stock field
+  %h1 Listing stock_fields
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Stock
+        %th Float value
+        %th String value
+        %th Text value
+        %th Template field
+        %th
+        %th
+        %th
+
+    %tbody
+      - @stock_fields.each do |stock_field|
+        %tr
+          %td= stock_field.stock
+          %td= stock_field.float_value
+          %td= stock_field.string_value
+          %td= stock_field.text_value
+          %td= stock_field.template_field
+          %td= link_to 'Show', stock_field
+          %td= link_to 'Edit', edit_stock_field_path(stock_field)
+          %td= link_to 'Destroy', stock_field, :data => { confirm: 'Are you sure?' }, :method => :delete

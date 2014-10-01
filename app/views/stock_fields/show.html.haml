@@ -1,0 +1,20 @@
+.page-header
+  = link_to stock_fields_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_stock_field_path(@stock_field), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show stock_field
+
+%dl.dl-horizontal
+  %dt Stock:
+  %dd= @stock_field.stock
+  %dt Float value:
+  %dd= @stock_field.float_value
+  %dt String value:
+  %dd= @stock_field.string_value
+  %dt Text value:
+  %dd= @stock_field.text_value
+  %dt Template field:
+  %dd= @stock_field.template_field

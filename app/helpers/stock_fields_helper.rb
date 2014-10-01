@@ -1,0 +1,2 @@
+module StockFieldsHelper
+end

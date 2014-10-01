@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'stocks#index'
+
+  resources :stock_fields
+
+  resources :stocks
+
   resources :template_fields
 
   resources :stock_templates
