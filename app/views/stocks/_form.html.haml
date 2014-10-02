@@ -8,10 +8,8 @@
         - @stock.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
-    = f.label :stock_template, :class => 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :stock_template, :class => 'form-control'
+  %h2= @stock.stock_template.name
+
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit :class => 'btn btn-primary'

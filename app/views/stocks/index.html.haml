@@ -1,7 +1,9 @@
 .page-header
-  = link_to new_stock_path, :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-plus
-    New Stock
+  = form_tag new_stock_path, method: :get do
+    = select_tag :stock_template_id, options_for_select(StockTemplate.all.collect{|x| [x.name, x.id]})
+    = submit_tag 'New Stock', :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Stock
   %h1 Listing stocks
 
 .table-responsive

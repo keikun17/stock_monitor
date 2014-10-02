@@ -14,7 +14,7 @@ class StocksController < ApplicationController
 
   # GET /stocks/new
   def new
-    @stock = Stock.new
+    @stock = Stock.new(stock_template_id: params[:stock_template_id])
   end
 
   # GET /stocks/1/edit
