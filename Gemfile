@@ -41,7 +41,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-commands-cucumber'
 end
 
 #----------------------------------------------------------------------
@@ -52,9 +51,16 @@ gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'bootstrap-generators', '~> 3.2.0'
 
-
 group :test do
-  gem 'cucumber-rails', require: false
+  gem 'capybara'
+  gem 'rspec-rails'
   gem 'factory_girl'
   gem 'database_cleaner'
+  gem 'spring-commands-rspec'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-byebug'
 end
