@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001161632) do
+ActiveRecord::Schema.define(version: 20141002041913) do
 
   create_table "stock_fields", force: true do |t|
     t.integer  "stock_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141001161632) do
     t.integer  "stock_template_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "field_type"
   end
 
   add_index "template_fields", ["stock_template_id"], name: "index_template_fields_on_stock_template_id"

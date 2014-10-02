@@ -9,6 +9,10 @@
           %li= msg
 
   .form-group
+    = f.label :stock_template, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.select :stock_template_id, options_from_collection_for_select(StockTemplate.all, :id, :name),  :class => 'col-sm-2 form-control'
+  .form-group
     = f.label :name, :class => 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :name, :class => 'form-control'
@@ -17,13 +21,13 @@
     .col-sm-10
       = f.text_field :unit, :class => 'form-control'
   .form-group
+    = f.label :field_type, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.select :field_type, TemplateField::TYPES, :class => 'col-sm-2 form-control'
+  .form-group
     = f.label :counter, :class => 'col-sm-2 control-label'
     .col-sm-10
       = f.check_box :counter, :class => 'form-control'
-  .form-group
-    = f.label :stock_template, :class => 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :stock_template, :class => 'form-control'
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit :class => 'btn btn-primary'

@@ -69,6 +69,6 @@ class TemplateFieldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_field_params
-      params.require(:template_field).permit(:name, :unit, :counter, :stock_template_id)
+      params.require(:template_field).permit(:name, :field_type, :unit, :counter, :stock_template_id)
     end
 end
