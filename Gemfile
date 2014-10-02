@@ -53,6 +53,8 @@ gem 'haml-rails'
 gem 'bootstrap-generators', '~> 3.2.0'
 
 
-gem 'cucumber'
-gem 'factory_girl'
-
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'factory_girl'
+  gem 'database_cleaner'
+end
