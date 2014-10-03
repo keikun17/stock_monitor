@@ -53,7 +53,6 @@ gem 'bootstrap-generators', '~> 3.2.0'
 
 group :test do
   gem 'capybara'
-  gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
@@ -63,4 +62,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'guard-rspec', require: false
 end
