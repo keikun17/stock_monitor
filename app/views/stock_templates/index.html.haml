@@ -15,7 +15,7 @@
 
     %tbody
       - @stock_templates.each do |stock_template|
-        %tr
+        %tr.stock_template_item
           %td= stock_template.name
           %td= link_to 'Show', stock_template
           %td= link_to 'Edit', edit_stock_template_path(stock_template)
