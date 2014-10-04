@@ -1,11 +1,11 @@
-= form_for @template_field, :html => { :class => "form-horizontal" } do |f|
-  -if @template_field.errors.any?
+= form_for @product_field, :html => { :class => "form-horizontal" } do |f|
+  -if @product_field.errors.any?
     .alert.alert-danger.alert-dismissable
       %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
-      %h4= "#{pluralize(@template_field.errors.count, "error")} prohibited this template_field from being saved:"
+      %h4= "#{pluralize(@product_field.errors.count, "error")} prohibited this product_field from being saved:"
 
       %ul
-        - @template_field.errors.full_messages.each do |msg|
+        - @product_field.errors.full_messages.each do |msg|
           %li= msg
 
   .form-group
@@ -23,7 +23,7 @@
   .form-group
     = f.label :field_type, :class => 'col-sm-2 control-label'
     .col-sm-10
-      = f.select :field_type, TemplateField::TYPES, :class => 'col-sm-2 form-control'
+      = f.select :field_type, ProductField::TYPES, :class => 'col-sm-2 form-control'
   .form-group
     = f.label :counter, :class => 'col-sm-2 control-label'
     .col-sm-10

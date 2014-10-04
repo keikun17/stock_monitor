@@ -69,6 +69,6 @@ class StockFieldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_field_params
-      params.require(:stock_field).permit(:stock_id, :float_value, :string_value, :text_value, :template_field_id)
+      params.require(:stock_field).permit(:stock_id, :float_value, :string_value, :text_value, :product_field_id)
     end
 end

@@ -12,7 +12,7 @@
         %th Float value
         %th String value
         %th Text value
-        %th Template field
+        %th Product field
         %th
         %th
         %th
@@ -24,7 +24,7 @@
           %td= stock_field.float_value
           %td= stock_field.string_value
           %td= stock_field.text_value
-          %td= stock_field.template_field
+          %td= stock_field.product_field
           %td= link_to 'Show', stock_field
           %td= link_to 'Edit', edit_stock_field_path(stock_field)
           %td= link_to 'Destroy', stock_field, :data => { confirm: 'Are you sure?' }, :method => :delete

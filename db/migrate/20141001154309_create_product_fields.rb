@@ -1,6 +1,6 @@
-class CreateTemplateFields < ActiveRecord::Migration
+class CreateProductFields < ActiveRecord::Migration
   def change
-    create_table :template_fields do |t|
+    create_table :product_fields do |t|
       t.string :name
       t.string :unit
       t.boolean :counter

@@ -1,0 +1,30 @@
+.page-header
+  = link_to new_product_field_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Product field
+  %h1 Listing Product Fields
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Unit
+        %th Field Type
+        %th Counter
+        %th Product
+        %th
+        %th
+        %th
+
+    %tbody
+      - @product_fields.each do |product_field|
+        %tr
+          %td= product_field.name
+          %td= product_field.unit
+          %td= product_field.counter
+          %td= product_field.field_type
+          %td= product_field.product.name
+          %td= link_to 'Show', product_field
+          %td= link_to 'Edit', edit_product_field_path(product_field)
+          %td= link_to 'Destroy', product_field, :data => { confirm: 'Are you sure?' }, :method => :delete

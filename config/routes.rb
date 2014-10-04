@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :stocks
 
-  resources :template_fields
+  resources :product_fields
 
   resources :products
 

@@ -5,7 +5,7 @@ class CreateStockFields < ActiveRecord::Migration
       t.float :float_value
       t.string :string_value
       t.text :text_value
-      t.references :template_field, index: true
+      t.references :product_field, index: true
 
       t.timestamps null: false
     end

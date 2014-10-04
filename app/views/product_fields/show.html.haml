@@ -1,0 +1,18 @@
+.page-header
+  = link_to product_fields_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_product_field_path(@product_field), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show product_field
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @product_field.name
+  %dt Unit:
+  %dd= @product_field.unit
+  %dt Counter:
+  %dd= @product_field.counter
+  %dt Product:
+  %dd= @product_field.product
