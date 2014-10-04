@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20141002041913) do
 
+  create_table "product_fields", force: true do |t|
+    t.string   "name"
+    t.string   "unit"
+    t.boolean  "counter"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "field_type"
+  end
+
+  add_index "product_fields", ["product_id"], name: "index_product_fields_on_product_id"
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -25,12 +37,12 @@ ActiveRecord::Schema.define(version: 20141002041913) do
     t.string   "string_value"
     t.text     "text_value"
     t.integer  "product_field_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "stock_fields", ["stock_id"], name: "index_stock_fields_on_stock_id"
   add_index "stock_fields", ["product_field_id"], name: "index_stock_fields_on_product_field_id"
+  add_index "stock_fields", ["stock_id"], name: "index_stock_fields_on_stock_id"
 
   create_table "stocks", force: true do |t|
     t.integer  "product_id"
@@ -39,17 +51,5 @@ ActiveRecord::Schema.define(version: 20141002041913) do
   end
 
   add_index "stocks", ["product_id"], name: "index_stocks_on_product_id"
-
-  create_table "product_fields", force: true do |t|
-    t.string   "name"
-    t.string   "unit"
-    t.boolean  "counter"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "field_type"
-  end
-
-  add_index "product_fields", ["product_id"], name: "index_product_fields_on_product_id"
 
 end
