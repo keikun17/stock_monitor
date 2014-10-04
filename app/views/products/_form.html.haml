@@ -1,11 +1,11 @@
-= form_for @stock_template, :html => { :class => "form-horizontal" } do |f|
-  -if @stock_template.errors.any?
+= form_for @product, :html => { :class => "form-horizontal" } do |f|
+  -if @product.errors.any?
     .alert.alert-danger.alert-dismissable
       %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
-      %h4= "#{pluralize(@stock_template.errors.count, "error")} prohibited this stock_template from being saved:"
+      %h4= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
 
       %ul
-        - @stock_template.errors.full_messages.each do |msg|
+        - @product.errors.full_messages.each do |msg|
           %li= msg
 
   .form-group

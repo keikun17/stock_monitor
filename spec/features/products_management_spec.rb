@@ -2,12 +2,12 @@ require "rails_helper"
 
 feature "Stock templates management" do
   before do
-    create(:stock_template, name: 'Conveyor Belt')
-    create(:stock_template, name: 'Roller')
+    create(:product, name: 'Conveyor Belt')
+    create(:product, name: 'Roller')
   end
 
   scenario "Create Stock Templates" do
-    visit stock_templates_path
+    visit products_path
     click_link "New Stock template"
     fill_in "Name", with: "Side Skirt"
     click_button "Create Stock template"
@@ -17,11 +17,11 @@ feature "Stock templates management" do
   end
 
   scenario "Delete Stock Templates" do
-    expect(StockTemplate.count).to eq(2)
+    expect(Product.count).to eq(2)
 
-    visit stock_templates_path
-    first('.stock_template_item').find(:link, "Destroy").click
-    expect(StockTemplate.count).to eq(1)
+    visit products_path
+    first('product_item').find(:link, "Destroy").click
+    expect(Product.count).to eq(1)
   end
 
 

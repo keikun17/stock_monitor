@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20141002041913) do
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stock_fields", force: true do |t|
     t.integer  "stock_id"
     t.float    "float_value"
@@ -26,30 +32,24 @@ ActiveRecord::Schema.define(version: 20141002041913) do
   add_index "stock_fields", ["stock_id"], name: "index_stock_fields_on_stock_id"
   add_index "stock_fields", ["template_field_id"], name: "index_stock_fields_on_template_field_id"
 
-  create_table "stock_templates", force: true do |t|
-    t.string   "name"
+  create_table "stocks", force: true do |t|
+    t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stocks", force: true do |t|
-    t.integer  "stock_template_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "stocks", ["stock_template_id"], name: "index_stocks_on_stock_template_id"
+  add_index "stocks", ["product_id"], name: "index_stocks_on_product_id"
 
   create_table "template_fields", force: true do |t|
     t.string   "name"
     t.string   "unit"
     t.boolean  "counter"
-    t.integer  "stock_template_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "field_type"
   end
 
-  add_index "template_fields", ["stock_template_id"], name: "index_template_fields_on_stock_template_id"
+  add_index "template_fields", ["product_id"], name: "index_template_fields_on_product_id"
 
 end

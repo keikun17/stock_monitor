@@ -24,7 +24,7 @@
           %td= template_field.unit
           %td= template_field.counter
           %td= template_field.field_type
-          %td= template_field.stock_template.name
+          %td= template_field.product.name
           %td= link_to 'Show', template_field
           %td= link_to 'Edit', edit_template_field_path(template_field)
           %td= link_to 'Destroy', template_field, :data => { confirm: 'Are you sure?' }, :method => :delete

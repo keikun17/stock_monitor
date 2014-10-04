@@ -1,5 +1,5 @@
 FactoryGirl.define do 
-  factory :stock_template, class: StockTemplate do
+  factory :product, class: Product do
     name "Conveyor Belt"
   end
 end

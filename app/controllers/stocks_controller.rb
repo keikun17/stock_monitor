@@ -14,7 +14,7 @@ class StocksController < ApplicationController
 
   # GET /stocks/new
   def new
-    @stock = Stock.new(stock_template_id: params[:stock_template_id])
+    @stock = Stock.new(product_id: params[:product_id])
   end
 
   # GET /stocks/1/edit
@@ -69,6 +69,6 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:stock_template_id)
+      params.require(:stock).permit(:product_id)
     end
 end

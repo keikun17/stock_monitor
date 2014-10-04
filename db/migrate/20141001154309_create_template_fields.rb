@@ -4,7 +4,7 @@ class CreateTemplateFields < ActiveRecord::Migration
       t.string :name
       t.string :unit
       t.boolean :counter
-      t.references :stock_template, index: true
+      t.references :product, index: true
 
       t.timestamps null: false
     end
