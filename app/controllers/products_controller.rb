@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product template was successfully created.' }
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @porduct.update(product_params)
-        format.html { redirect_to @product, notice: 'Stock template was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -56,19 +56,19 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Stock template was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = StockTemplate.find(params[:id])
+    def set_products
+      @product = Product.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def product
+    def product_params
       params.require(:product).permit(:name)
     end
 end

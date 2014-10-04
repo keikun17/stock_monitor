@@ -1,26 +1,26 @@
 require "rails_helper"
 
-feature "Stock templates management" do
+feature "Products management" do
   before do
     create(:product, name: 'Conveyor Belt')
     create(:product, name: 'Roller')
   end
 
-  scenario "Create Stock Templates" do
+  scenario "Create Product" do
     visit products_path
-    click_link "New Stock template"
+    click_link "New Product"
     fill_in "Name", with: "Side Skirt"
-    click_button "Create Stock template"
+    click_button "Create Product"
 
-    expect(page).to have_text("Stock template was successfully created.")
+    expect(page).to have_text("Product was successfully created.")
     expect(page).to have_text("Side Skirt")
   end
 
-  scenario "Delete Stock Templates" do
+  scenario "Delete Product" do
     expect(Product.count).to eq(2)
 
     visit products_path
-    first('product_item').find(:link, "Destroy").click
+    page.first('.product_item').find(:link, "Destroy").click
     expect(Product.count).to eq(1)
   end
 
