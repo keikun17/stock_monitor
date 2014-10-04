@@ -1,5 +1,5 @@
-class ProductFieldsController
-,tbefore_action :set_product_field, only: [:show, :edit, :update, :destroy]
+class ProductFieldsController < ApplicationController
+  before_action :set_product_field, only: [:show, :edit, :update, :destroy]
 
   # GET /product_fields
   # GET /product_fields.json
