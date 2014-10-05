@@ -15,6 +15,9 @@ class StocksController < ApplicationController
   # GET /stocks/new
   def new
     @stock = Stock.new(product_id: params[:product_id])
+    @stock.product_fields.each do |product_field|
+      @stock.stock_fields.build(product_field: product_field)
+    end
   end
 
   # GET /stocks/1/edit
@@ -69,6 +72,10 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:product_id)
+      params.require(:stock).permit(:product_id,
+                                    stock_fields_attributes: [:product_field_id,
+                                                              :float_value,
+                                                              :string_value,
+                                                              :text_value ])
     end
 end

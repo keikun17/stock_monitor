@@ -2,6 +2,8 @@ class Stock < ActiveRecord::Base
   belongs_to :product
   has_many :stock_fields
   has_many :product_fields, through: :product
+
+  accepts_nested_attributes_for :stock_fields
 end
 
 # == Schema Information
