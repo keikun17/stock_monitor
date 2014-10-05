@@ -10,3 +10,17 @@
 %dl.dl-horizontal
   %dt Product:
   %dd= @stock.product
+
+  %table.table
+    %tr
+      %th Field
+      %th Value
+      %th Unit
+      - @stock.stock_fields.each do |stock_field|
+        %tr
+          %td= stock_field.product_field.name
+          %td
+            - case stock_field.product_field.field_type
+            - when 'float'
+              = stock_field.float_value
+          %td= stock_field.product_field.unit
