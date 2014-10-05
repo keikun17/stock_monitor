@@ -30,6 +30,12 @@ feature "Stock Management" do
 
     expect(page).to have_text("Stock was successfully created.")
 
+    expect(page).to have_text('900')
+    expect(page).to have_text('300')
+    expect(page).to have_text('x')
+    expect(page).to have_text('3')
+    expect(page).to have_text('4')
+    expect(page).to have_text('2')
 
     expect(Stock.count).to eq(initial_product_count + 1)
   end
