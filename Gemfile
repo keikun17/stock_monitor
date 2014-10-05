@@ -59,6 +59,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'annotate', require: false
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-byebug'
