@@ -20,6 +20,10 @@
       = ff.label :float_value, ff.object.product_field.name
       = ff.text_field :float_value
       (Float)
+    - when "string"
+      = ff.label :string_value, ff.object.product_field.name
+      = ff.text_field :string_value
+      (String)
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit :class => 'btn btn-primary'
