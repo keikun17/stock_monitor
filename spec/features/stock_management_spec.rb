@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature "Stock Management" do
 
+  let(:ar_belt) { create(:product, name: "Abrasive Resistant Conveyor Belt") }
   before do
-    ar_belt = create(:product, name: "Abrasive Resistant Conveyor Belt")
     create(:product_field, name: 'width', field_type: 'float',  product: ar_belt)
     create(:product_field, name: 'EP', field_type: 'float',  product: ar_belt)
     create(:product_field, name: 'X or /', field_type: 'float',  product: ar_belt)
@@ -14,12 +14,12 @@ feature "Stock Management" do
   end
 
   scenario "Create a Stock Record" do
-    initial_product_count = Stock.count
+    initial_product_count = ar_belt.stocks.count
 
-    visit stocks_path
-    select "Abrasive Resistant Conveyor Belt", from: "product_id"
+    visit products_path
+    click_link "Abrasive Resistant Conveyor Belt"
 
-    click_button "New Stock"
+    click_link "New Stock"
 
     fill_in "width", with: '900'
     fill_in "EP", with: '300'
@@ -39,6 +39,6 @@ feature "Stock Management" do
     expect(page).to have_text('4')
     expect(page).to have_text('2')
 
-    expect(Stock.count).to eq(initial_product_count + 1)
+    expect(ar_belt.stocks.count).to eq(initial_product_count + 1)
   end
 end
