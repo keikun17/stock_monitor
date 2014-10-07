@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  root 'stocks#index'
+  root 'products#index'
 
   resources :stock_fields
-
-  resources :stocks
 
   resources :product_fields
 
