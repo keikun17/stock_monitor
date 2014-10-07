@@ -8,7 +8,8 @@
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th Product
+        - @product.product_fields.each do |product_field|
+          %th= product_field.name
         %th
         %th
         %th
@@ -16,6 +17,8 @@
     %tbody
       - @stocks.each do |stock|
         %tr
+          - @product.product_fields.each do |product_field|
+            %td= stock.stock_fields.where(product_field: product_field).first.try(:string_value) || stock.stock_fields.where(product_field: product_field).first.try(:float_value)
           %td= stock.product
           %td= link_to 'Show', product_stock_path(@product,stock)
           %td= link_to 'Edit', edit_product_stock_path(@product,stock)
