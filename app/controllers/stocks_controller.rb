@@ -15,7 +15,8 @@ class StocksController < ApplicationController
 
   # GET /stocks/new
   def new
-    @stock = Stock.new(product_id: params[:product_id])
+    @product = Product.find(params[:product_id])
+    @stock = @product.stocks.new(product_id: params[:product_id])
     @stock.product_fields.each do |product_field|
       @stock.stock_fields.build(product_field: product_field)
     end
