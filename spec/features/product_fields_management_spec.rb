@@ -24,6 +24,13 @@ feature "Produce Fields Management" do
   end
 
   scenario "Delete a Product Field" do
+    create(:product_field)
+    create(:product_field)
+    expect(ProductField.count).to eq(2)
+
+    visit product_fields_path
+    page.first('.product_field_item').find(:link, "Destroy").click
+    expect(ProductField.count).to eq(1)
   end
 end
 

@@ -19,7 +19,7 @@
 
     %tbody
       - @product_fields.each do |product_field|
-        %tr
+        %tr.product_field_item
           %td= product_field.name
           %td= product_field.unit
           %td= product_field.counter
