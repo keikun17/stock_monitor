@@ -3,6 +3,5 @@ FactoryGirl.define do
     name         "size"
     unit         "meter"
     field_type   'float'
-    counter      false
   end
 end

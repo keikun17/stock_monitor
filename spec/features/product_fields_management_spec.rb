@@ -16,7 +16,6 @@ feature "Produce Fields Management" do
     fill_in "Name", with: "Width"
     fill_in "Unit", with: "mm"
     select "float", from: "Field type"
-    uncheck "Counter"
 
     click_button "Create Product field"
 
