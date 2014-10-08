@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002041913) do
+ActiveRecord::Schema.define(version: 20141008122628) do
 
   create_table "product_fields", force: true do |t|
     t.string   "name"
     t.string   "unit"
-    t.boolean  "counter"
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

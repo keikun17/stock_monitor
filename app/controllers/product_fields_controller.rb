@@ -69,6 +69,6 @@ class ProductFieldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_field_params
-      params.require(:product_field).permit(:name, :field_type, :unit, :counter, :product_id)
+      params.require(:product_field).permit(:name, :field_type, :unit, :product_id)
     end
 end

@@ -25,9 +25,5 @@
     .col-sm-10
       = f.select :field_type, ProductField::TYPES, :class => 'col-sm-2 form-control'
   .form-group
-    = f.label :counter, :class => 'col-sm-2 control-label'
-    .col-sm-10
-      = f.check_box :counter, :class => 'form-control'
-  .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit :class => 'btn btn-primary'
