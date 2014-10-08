@@ -1,0 +1,22 @@
+.page-header
+  = link_to deposits_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_deposit_path(@deposit), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show deposit
+
+%dl.dl-horizontal
+  %dt Quantity:
+  %dd= @deposit.quantity
+  %dt Unit:
+  %dd= @deposit.unit
+  %dt Date ordered:
+  %dd= @deposit.date_ordered
+  %dt Arrival date:
+  %dd= @deposit.arrival_date
+  %dt Remarks:
+  %dd= @deposit.remarks
+  %dt Stock:
+  %dd= @deposit.stock

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :deposits
+
   root 'products#index'
 
   resources :stock_fields
