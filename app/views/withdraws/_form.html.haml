@@ -1,0 +1,37 @@
+= form_for @withdraw, :html => { :class => "form-horizontal" } do |f|
+  -if @withdraw.errors.any?
+    .alert.alert-danger.alert-dismissable
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %h4= "#{pluralize(@withdraw.errors.count, "error")} prohibited this withdraw from being saved:"
+
+      %ul
+        - @withdraw.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :quantity, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :quantity, :class => 'form-control'
+  .form-group
+    = f.label :unit, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :unit, :class => 'form-control'
+  .form-group
+    = f.label :date_ordered, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.datetime_select :date_ordered, :class => 'form-control'
+  .form-group
+    = f.label :arrival_date, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.datetime_select :arrival_date, :class => 'form-control'
+  .form-group
+    = f.label :remarks, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :remarks, :class => 'form-control'
+  .form-group
+    = f.label :stock, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :stock, :class => 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit :class => 'btn btn-primary'

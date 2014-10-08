@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :withdraws
+
   resources :deposits
 
   root 'products#index'

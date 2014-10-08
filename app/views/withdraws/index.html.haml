@@ -1,0 +1,32 @@
+.page-header
+  = link_to new_withdraw_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Withdraw
+  %h1 Listing withdraws
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Quantity
+        %th Unit
+        %th Date ordered
+        %th Arrival date
+        %th Remarks
+        %th Stock
+        %th
+        %th
+        %th
+
+    %tbody
+      - @withdraws.each do |withdraw|
+        %tr
+          %td= withdraw.quantity
+          %td= withdraw.unit
+          %td= withdraw.date_ordered
+          %td= withdraw.arrival_date
+          %td= withdraw.remarks
+          %td= withdraw.stock
+          %td= link_to 'Show', withdraw
+          %td= link_to 'Edit', edit_withdraw_path(withdraw)
+          %td= link_to 'Destroy', withdraw, :data => { confirm: 'Are you sure?' }, :method => :delete
