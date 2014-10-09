@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008122628) do
+ActiveRecord::Schema.define(version: 20141008141656) do
+
+  create_table "deposits", force: true do |t|
+    t.float    "quantity"
+    t.string   "unit"
+    t.datetime "date_ordered"
+    t.datetime "arrival_date"
+    t.text     "remarks"
+    t.integer  "stock_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "deposits", ["stock_id"], name: "index_deposits_on_stock_id"
 
   create_table "product_fields", force: true do |t|
     t.string   "name"
@@ -50,5 +63,18 @@ ActiveRecord::Schema.define(version: 20141008122628) do
   end
 
   add_index "stocks", ["product_id"], name: "index_stocks_on_product_id"
+
+  create_table "withdraws", force: true do |t|
+    t.float    "quantity"
+    t.string   "unit"
+    t.datetime "date_ordered"
+    t.datetime "arrival_date"
+    t.text     "remarks"
+    t.integer  "stock_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "withdraws", ["stock_id"], name: "index_withdraws_on_stock_id"
 
 end
