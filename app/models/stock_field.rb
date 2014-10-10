@@ -1,6 +1,17 @@
 class StockField < ActiveRecord::Base
   belongs_to :stock
   belongs_to :product_field
+
+  def value
+    case product_field.field_type
+    when 'float'
+      float_value
+    when 'string'
+      string_value
+    when 'text'
+      text_value
+    end
+  end
 end
 
 # == Schema Information
