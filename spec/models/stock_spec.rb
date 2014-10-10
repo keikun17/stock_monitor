@@ -11,7 +11,9 @@ describe Stock do
     end
 
     it "saves with the built stock_fields" do
+      expect(subject).to_not be_persisted
       subject.save
+
       expect(subject).to be_persisted
       expect(subject.stock_fields).to_not be_empty
     end
@@ -47,11 +49,26 @@ describe Stock do
 
   end
 
-  describe "#update_field" do
+  describe "#update_field_value" do
     let(:ar_belt) { create(:abrasive_resistant_belt) }
-    subject { described_class.initialize_fields(ar_belt) }
+    subject(:stock) { described_class.initialize_fields(ar_belt) }
 
-    it "builds the stock_fields"
+    context "When the stock has not been saved yet" do
+      before { expect(stock).to_not be_persisted }
+      it "retrieves the value of the stock field" do
+        stock.update_field_value("Brand", "Brand X")
+        expect(stock.get_field_value("Brand")).to eq("Brand X")
+      end
+    end
+
+    context "When the stock has already been saved yet" do
+      before { stock.save ; expect(stock).to be_persisted }
+      it "retrieves the value of the stock field" do
+        stock.update_field_value("Brand", "Brand X")
+        expect(stock.get_field_value("Brand")).to eq("Brand X")
+      end
+    end
+
   end
 
 end
