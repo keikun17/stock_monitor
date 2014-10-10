@@ -2,14 +2,66 @@ require 'rails_helper'
 
 describe Stock do
 
-  describe "#initialize_fields" do
+  describe ".initialize_fields" do
     let(:ar_belt) { create(:abrasive_resistant_belt) }
     subject { described_class.initialize_fields(ar_belt) }
 
     it "builds the stock_fields" do
-      expect(subject.product_fields).to_not be_empty
+      expect(subject.stock_fields).to_not be_empty
+    end
+
+    it "saves with the built stock_fields" do
+      subject.save
+      expect(subject).to be_persisted
+      expect(subject.stock_fields).to_not be_empty
+    end
+  end
+
+  describe "#get_field_value" do
+    let(:ar_belt) { create(:abrasive_resistant_belt) }
+    subject(:stock) { described_class.initialize_fields(ar_belt) }
+
+    before do
+      product_brand_field_id = ar_belt.product_fields.where(name: "Brand").first.id
+
+      stock_brand_field = stock.stock_fields.select do |stock_field|
+        stock_field.product_field_id == product_brand_field_id
+      end
+
+      stock_brand_field.first.update_attribute(:string_value, "Awesome Brand")
+    end
+
+    context "When the stock has not been saved yet" do
+      before { expect(stock).to_not be_persisted }
+      it "retrieves the value of the stock field" do
+        expect(stock.get_field_value("Brand")).to eq("Awesome Brand")
+      end
+    end
+
+    context "When the stock has already been saved yet" do
+      before { stock.save ; expect(stock).to be_persisted }
+      it "retrieves the value of the stock field" do
+        expect(stock.get_field_value("Brand")).to eq("Awesome Brand")
+      end
     end
 
   end
 
+  describe "#update_field" do
+    let(:ar_belt) { create(:abrasive_resistant_belt) }
+    subject { described_class.initialize_fields(ar_belt) }
+
+    it "builds the stock_fields"
+  end
+
 end
+
+# == Schema Information
+#
+# Table name: stocks
+#
+#  id         :integer          not null, primary key
+#  product_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#

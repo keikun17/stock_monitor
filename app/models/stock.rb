@@ -14,6 +14,20 @@ class Stock < ActiveRecord::Base
     stock
   end
 
+  def get_field_value(field_name)
+    product_field_id = self.product_fields.where(name: field_name).first.id
+
+    stock_field = self.stock_fields.select do |stock_field|
+      stock_field.product_field_id == product_field_id
+    end.first.value
+
+  end
+
+  def update_field_value(field_name)
+
+  end
+
+
 end
 
 # == Schema Information
