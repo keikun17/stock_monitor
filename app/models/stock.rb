@@ -7,7 +7,7 @@ class Stock < ActiveRecord::Base
 
   def self.initialize_fields(product)
     stock = new(product: product)
-    stock.product_fields.each do |product_field|
+    product.product_fields.each do |product_field|
       stock.stock_fields.build(product_field: product_field)
     end
 
