@@ -26,6 +26,35 @@ describe StockField do
       it { is_expected.to eq(4.2) }
     end
   end
+
+  describe "#update_value" do
+    let(:product_field) {ProductField.create(field_type: 'string')}
+    subject (:stock_field) do
+      described_class.new(string_value: 'original string',
+                          product_field: product_field)
+    end
+
+    context "not persisted" do
+      before {expect(stock_field).to_not be_persisted}
+      it "sets the dirty value" do
+        stock_field.update_value('edited string')
+        expect(stock_field.value).to eq('edited string')
+        expect(stock_field).to_not be_persisted
+      end
+    end
+
+    context "persisted" do
+      before {stock_field.save}
+      it "updates the stock_field's value" do
+        stock_field.update_value('edited string')
+        expect(stock_field.value).to eq('edited string')
+        expect(stock_field).to be_persisted
+        expect(stock_field).to_not be_changed
+      end
+    end
+
+  end
+
 end
 
 # == Schema Information
