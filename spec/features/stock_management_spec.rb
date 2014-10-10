@@ -2,23 +2,14 @@ require 'rails_helper'
 
 feature "Stock Management" do
 
-  let(:ar_belt) { create(:product, name: "Abrasive Resistant Conveyor Belt") }
-  before do
-    create(:product_field, name: 'width', field_type: 'float',  product: ar_belt)
-    create(:product_field, name: 'EP', field_type: 'float',  product: ar_belt)
-    create(:product_field, name: 'X or /', field_type: 'float',  product: ar_belt)
-    create(:product_field, name: 'ply', field_type: 'float', product: ar_belt)
-    create(:product_field, name: 'Top Cover', field_type: 'float',  product: ar_belt)
-    create(:product_field, name: 'Bottom Cover', field_type: 'float', product: ar_belt)
-    create(:product_field, name: 'Resistance', field_type: 'string', product: ar_belt)
-  end
+  let!(:ar_belt) { create(:abrasive_resistant_belt) }
 
   scenario "Create a Stock Record" do
     initial_product_count = ar_belt.stocks.count
 
     visit products_path
-    click_link "Abrasive Resistant Conveyor Belt"
 
+    click_link ar_belt.name
     click_link "New Stock"
 
     fill_in "width", with: '900'
