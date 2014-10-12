@@ -35,10 +35,9 @@ class StockField < ActiveRecord::Base
       when 'text'
         self.text_value = new_value
       end
-      self
-
     end
 
+    self
   end
 end
 

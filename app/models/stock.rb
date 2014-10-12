@@ -15,18 +15,25 @@ class Stock < ActiveRecord::Base
   end
 
   def get_field_value(field_name)
-    product_field_id = self.product_fields.where(name: field_name).first.id
+    find_field_by_name(field_name).value
+  end
 
+  def update_field_value(field_name, new_value)
+    stock_field = find_field_by_name(field_name)
+    stock_field.update_value(new_value)
+  end
+
+
+  private
+
+  # This searches through the collection using 'select' so it would not trigger
+  # AR's and search through the product's product_fields
+  def find_field_by_name(field_name)
+    product_field_id = self.product_fields.find_by(name: field_name).id
     stock_field = self.stock_fields.select do |stock_field|
       stock_field.product_field_id == product_field_id
-    end.first.value
-
+    end.first
   end
-
-  def update_field_value(field_name)
-
-  end
-
 
 end
 
