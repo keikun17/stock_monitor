@@ -11,7 +11,7 @@
   %dt Product:
   %dd= @stock.product
 
-  =link_to new_deposit_path, :class => 'btn btn-primary' do
+  =link_to new_deposit_path(stock_id: @stock.id), :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     Deposit Stock
 

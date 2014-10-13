@@ -13,6 +13,7 @@ feature "Produce Fields Management" do
     click_link "New Product field"
 
     select "Conveyor Belt", from: 'Product'
+
     fill_in "Name", with: "Width"
     fill_in "Unit", with: "mm"
     select "float", from: "Field type"

@@ -8,22 +8,21 @@
         - @deposit.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.hidden_field :stock_id
   .form-group
     = f.label :quantity, :class => 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :quantity, :class => 'form-control'
   .form-group
-    = f.label :unit, :class => 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :unit, :class => 'form-control'
-  .form-group
     = f.label :date_ordered, :class => 'col-sm-2 control-label'
     .col-sm-10
-      = f.datetime_select :date_ordered, :class => 'form-control'
+      .form-control
+        = f.date_select :date_ordered, {include_blank: true, default: nil}
   .form-group
     = f.label :arrival_date, :class => 'col-sm-2 control-label'
     .col-sm-10
-      = f.datetime_select :arrival_date, :class => 'form-control'
+      .form-control
+        = f.date_select :arrival_date, {include_blank: true, default: nil}
   .form-group
     = f.label :remarks, :class => 'col-sm-2 control-label'
     .col-sm-10

@@ -9,7 +9,6 @@
     %thead
       %tr
         %th Quantity
-        %th Unit
         %th Date ordered
         %th Arrival date
         %th Remarks
@@ -22,7 +21,6 @@
       - @deposits.each do |deposit|
         %tr
           %td= deposit.quantity
-          %td= deposit.unit
           %td= deposit.date_ordered
           %td= deposit.arrival_date
           %td= deposit.remarks
