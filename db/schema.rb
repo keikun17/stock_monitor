@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008141656) do
+ActiveRecord::Schema.define(version: 20141013132944) do
 
   create_table "deposits", force: true do |t|
     t.float    "quantity"
-    t.string   "unit"
     t.datetime "date_ordered"
     t.datetime "arrival_date"
     t.text     "remarks"
@@ -66,7 +65,6 @@ ActiveRecord::Schema.define(version: 20141008141656) do
 
   create_table "withdraws", force: true do |t|
     t.float    "quantity"
-    t.string   "unit"
     t.datetime "date_ordered"
     t.datetime "arrival_date"
     t.text     "remarks"

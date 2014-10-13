@@ -14,7 +14,8 @@ class DepositsController < ApplicationController
 
   # GET /deposits/new
   def new
-    @deposit = Deposit.new
+    @stock = Stock.find(params[:stock_id])
+    @deposit = @stock.deposits.new
   end
 
   # GET /deposits/1/edit
@@ -69,6 +70,6 @@ class DepositsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deposit_params
-      params.require(:deposit).permit(:quantity, :unit, :date_ordered, :arrival_date, :remarks, :stock_id)
+      params.require(:deposit).permit(:quantity, :date_ordered, :arrival_date, :remarks, :stock_id)
     end
 end

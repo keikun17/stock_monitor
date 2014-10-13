@@ -2,6 +2,7 @@ class Stock < ActiveRecord::Base
   belongs_to :product
   has_many :stock_fields
   has_many :product_fields, through: :product
+  has_many :deposits
 
   accepts_nested_attributes_for :stock_fields
 
