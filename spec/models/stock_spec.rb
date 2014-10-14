@@ -19,6 +19,27 @@ describe Stock do
     end
   end
 
+  describe "#total_withdrawn" do
+    subject(:stock) { create(:stock) }
+
+    before do
+      create(:withdraw, quantity: 100, stock: stock)
+      create(:withdraw, quantity: 20, stock: stock)
+      create(:withdraw, quantity: 50, stock: stock)
+    end
+
+    it "sums the total withdrawn quantities" do
+      expect(stock.total_withdrawn).to eq(170)
+    end
+  end
+
+  describe "#quantity" do
+    subject(:stock) { create(:stock) }
+    let(:deposit) { create(:deposit, quantity: 500, stock: stock)}
+
+    it "returns the difference of deposit and withdraw quantities"
+  end
+
   describe "#get_field_value" do
     let(:ar_belt) { create(:abrasive_resistant_belt) }
     subject(:stock) { described_class.initialize_fields(ar_belt) }

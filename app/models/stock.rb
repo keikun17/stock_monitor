@@ -2,9 +2,15 @@ class Stock < ActiveRecord::Base
   belongs_to :product
   has_many :stock_fields
   has_many :product_fields, through: :product
+
   has_many :deposits
+  has_many :withdraws
 
   accepts_nested_attributes_for :stock_fields
+
+  def total_withdrawn
+    withdraws.sum(:quantity)
+  end
 
   def self.initialize_fields(product)
     stock = new(product: product)
