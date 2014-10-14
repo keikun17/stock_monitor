@@ -20,7 +20,8 @@ feature "Stock Quantity" do
     click_button "Create Deposit"
 
     expect(page).to have_text("Deposit was successfully created.")
-    expect(page).to have_text("555")
+    expect(stock.remaining_quantity).to eq(555.0)
+    expect(page).to have_text("555.0")
   end
 
   scenario "Withdrawing decreases the stock quantity"
