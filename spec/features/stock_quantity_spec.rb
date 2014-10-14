@@ -11,12 +11,16 @@ feature "Stock Quantity" do
     click_link stock.id.to_s
     click_link "Deposit Stock"
 
-    expect(page.find('#deposit_stock_id')).to eq(stock.id)
     fill_in "Quantity", with: 555
-    select Time.now.year + 1, from: "#arrival_date_1i"
-    click_button "Submit"
 
-    expect(page).to_not have_text("555")
+    expect(page.find('#deposit_stock_id').value).to eq(stock.id.to_s)
+    select Time.now.year, from: "deposit_date_ordered_1i"
+    select Time.now.strftime("%B"), from: "deposit_date_ordered_2i"
+    select Time.now.day, from: "deposit_date_ordered_3i"
+    click_button "Create Deposit"
+
+    expect(page).to have_text("Deposit was successfully created.")
+    expect(page).to have_text("555")
   end
 
   scenario "Withdrawing decreases the stock quantity"
