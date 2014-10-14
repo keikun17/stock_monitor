@@ -19,6 +19,20 @@ describe Stock do
     end
   end
 
+  describe "#total_deposit" do
+    subject(:stock) { create(:stock) }
+
+    before do
+      create(:deposit, quantity: 33, stock: stock)
+      create(:deposit, quantity: 44, stock: stock)
+      create(:deposit, quantity: 11, stock: stock)
+    end
+
+    it "sums the total deposit quantities" do
+      expect(stock.total_deposit).to eq(88)
+    end
+  end
+
   describe "#total_withdrawn" do
     subject(:stock) { create(:stock) }
 
@@ -33,11 +47,18 @@ describe Stock do
     end
   end
 
-  describe "#quantity" do
+  describe "#remaining_quantity" do
     subject(:stock) { create(:stock) }
-    let(:deposit) { create(:deposit, quantity: 500, stock: stock)}
+    before do
+      create(:deposit, quantity: 20, stock: stock)
+      create(:deposit, quantity: 30, stock: stock)
+      create(:deposit, quantity: 50, stock: stock)
+      create(:withdraw, quantity: 10, stock: stock)
+    end
 
-    it "returns the difference of deposit and withdraw quantities"
+    it "returns the difference of deposit and withdraw quantities" do
+      expect(stock.remaining_quantity).to eq(90)
+    end
   end
 
   describe "#get_field_value" do

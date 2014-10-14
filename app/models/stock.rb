@@ -12,6 +12,14 @@ class Stock < ActiveRecord::Base
     withdraws.sum(:quantity)
   end
 
+  def total_deposit
+    deposits.sum(:quantity)
+  end
+
+  def remaining_quantity
+    total_deposit - total_withdrawn
+  end
+
   def self.initialize_fields(product)
     stock = new(product: product)
     product.product_fields.each do |product_field|
