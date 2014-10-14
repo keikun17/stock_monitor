@@ -14,7 +14,7 @@ feature "Stock Management" do
 
     fill_in "width", with: '900'
     fill_in "EP", with: '300'
-    fill_in "X or /", with: 'x'
+    fill_in "X or /", with: 'X'
     fill_in "ply", with: '3'
     fill_in "Top Cover", with: '4'
     fill_in "Bottom Cover", with: '2'
@@ -25,7 +25,7 @@ feature "Stock Management" do
 
     expect(page).to have_text('900')
     expect(page).to have_text('300')
-    expect(page).to have_text('x')
+    expect(page).to have_text('X')
     expect(page).to have_text('3')
     expect(page).to have_text('4')
     expect(page).to have_text('2')

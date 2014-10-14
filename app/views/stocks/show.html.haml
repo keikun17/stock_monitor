@@ -7,29 +7,28 @@
     Edit
   %h1 Show stock
 
-%dl.dl-horizontal
-  %dt Product:
-  %dd= @stock.product
 
-  =link_to new_deposit_path(stock_id: @stock.id), :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-plus
-    Deposit Stock
+=link_to new_deposit_path(stock_id: @stock.id), :class => 'btn btn-primary' do
+  %span.glyphicon.glyphicon-plus
+  Deposit Stock
 
-  %h2
-    Remaining Quantity
-    = @stock.remaining_quantity
-    {{unit}}
 
-  %table.table
-    %tr
-      %th Field
-      %th Value
-      %th Unit
-      - @stock.stock_fields.each do |stock_field|
-        %tr
-          %td= stock_field.product_field.name
-          %td
-            - case stock_field.product_field.field_type
-            - when 'float'
-              = stock_field.float_value
-          %td= stock_field.product_field.unit
+%h2
+  Remaining Quantity
+  = @stock.remaining_quantity
+  {{unit}}
+
+%h4 Product #{@stock.product.name}
+%table.table
+  %tr
+    %th Field
+    %th Value
+    %th Unit
+    - @stock.stock_fields.each do |stock_field|
+      %tr
+        %td= stock_field.product_field.name
+        %td
+          - case stock_field.product_field.field_type
+          - when 'float'
+            = stock_field.float_value
+        %td= stock_field.product_field.unit
