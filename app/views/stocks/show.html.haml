@@ -32,3 +32,65 @@
           - when 'float'
             = stock_field.float_value
         %td= stock_field.product_field.unit
+
+.row
+  .col-sm-6
+    %h3 Deposits
+
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Qty
+            %th Ordered at
+            %th Arrived at
+            %th Remarks
+            %th Stock
+            %th
+            %th
+            %th
+
+        %tbody
+          - @stock.deposits.each do |deposit|
+            %tr
+              %td= deposit.quantity
+              %td= deposit.date_ordered
+              %td= deposit.arrival_date
+              %td= deposit.remarks
+              %td= deposit.stock.id
+              %td= link_to 'Show', deposit
+              %td= link_to 'Edit', edit_deposit_path(deposit)
+              %td= link_to 'Destroy', deposit, :data => { confirm: 'Are you sure?' }, :method => :delete
+
+
+
+  .col-sm-6
+    %h3 Withdraws
+
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Qty
+            %th Ordered At
+            %th Arrived at
+            %th Remarks
+            %th Stock
+            %th
+            %th
+            %th
+
+        %tbody
+          - @stock.withdraws.each do |withdraw|
+            %tr
+              %td= withdraw.quantity
+              %td= withdraw.date_ordered
+              %td= withdraw.arrival_date
+              %td= withdraw.remarks
+              %td= withdraw.stock.id
+              %td= link_to 'Show', withdraw
+              %td= link_to 'Edit', edit_withdraw_path(withdraw)
+              %td= link_to 'Destroy', withdraw, :data => { confirm: 'Are you sure?' }, :method => :delete
+
+
+

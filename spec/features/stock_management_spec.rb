@@ -32,4 +32,23 @@ feature "Stock Management" do
 
     expect(ar_belt.stocks.count).to eq(initial_product_count + 1)
   end
+
+  scenario "Edit a Stock Record" do
+
+  end
+
+  scenario "Viewing an Stock record existing withdrawal and deposit records"  do
+    product =  create :product, name: 'Awesome Product'
+    stock = create :stock, :with_90_remaining, product_id: product.id
+
+    visit products_path
+    click_link "Awesome Product"
+    click_link stock.id.to_s
+
+    expect(page).to have_text("Remaining Quantity 90.0")
+    expect(page).to have_text('20.0')
+    expect(page).to have_text('30.0')
+    expect(page).to have_text('50.0')
+    expect(page).to have_text('10.0')
+  end
 end
