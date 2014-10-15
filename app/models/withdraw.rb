@@ -1,5 +1,7 @@
 class Withdraw < ActiveRecord::Base
   belongs_to :stock
+
+  delegate :product, to: :stock, prefix: false
 end
 
 # == Schema Information

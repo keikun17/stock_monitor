@@ -1,5 +1,5 @@
 .page-header
-  = link_to deposits_path, :class => 'btn btn-default' do
+  = link_to product_stock_path(@deposit.product, @deposit.stock), :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     Back
   %h1 New deposit
