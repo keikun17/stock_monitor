@@ -43,7 +43,7 @@ class WithdrawsController < ApplicationController
   def update
     respond_to do |format|
       if @withdraw.update(withdraw_params)
-        format.html { redirect_to @withdraw, notice: 'Withdraw was successfully updated.' }
+        format.html { redirect_to [@withdraw.product, @withdraw.stock], notice: 'Withdraw was successfully updated.' }
         format.json { render :show, status: :ok, location: @withdraw }
       else
         format.html { render :edit }

@@ -43,7 +43,7 @@ class DepositsController < ApplicationController
   def update
     respond_to do |format|
       if @deposit.update(deposit_params)
-        format.html { redirect_to @deposit, notice: 'Deposit was successfully updated.' }
+        format.html { redirect_to [@deposit.product, @deposit.stock], notice: 'Deposit was successfully updated.' }
         format.json { render :show, status: :ok, location: @deposit }
       else
         format.html { render :edit }

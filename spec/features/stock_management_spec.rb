@@ -33,11 +33,7 @@ feature "Stock Management" do
     expect(ar_belt.stocks.count).to eq(initial_product_count + 1)
   end
 
-  scenario "Edit a Stock Record" do
-
-  end
-
-  scenario "Viewing an Stock record existing withdrawal and deposit records"  do
+  scenario "Viewing a Stock Record with existing deposit and withdraws" do
     product =  create :product, name: 'Awesome Product'
     stock = create :stock, :with_90_remaining, product_id: product.id
 
@@ -50,5 +46,45 @@ feature "Stock Management" do
     expect(page).to have_text('30.0')
     expect(page).to have_text('50.0')
     expect(page).to have_text('10.0')
+  end
+
+  scenario "Editing and existing Stock's Deposit"  do
+    product =  create :product, name: 'Awesome Product'
+    stock = create :stock, product_id: product.id
+    deposit = create :deposit, quantity: 78, stock: stock
+    deposit = create :withdraw, quantity: 8, stock: stock
+
+    visit products_path
+    click_link "Awesome Product"
+    click_link stock.id.to_s
+    within('#deposits') do
+      click_link('Edit')
+    end
+
+    fill_in "Quantity", with: 88
+    click_button "Update Deposit"
+
+    expect(page).to have_text('Deposit was successfully updated.')
+    expect(page).to have_text('Remaining Quantity 80.0')
+  end
+
+  scenario "Editing an existing Stock's Withdraw"  do
+    product =  create :product, name: 'Awesome Product'
+    stock = create :stock, product_id: product.id
+    deposit = create :deposit, quantity: 78, stock: stock
+    deposit = create :withdraw, quantity: 8, stock: stock
+
+    visit products_path
+    click_link "Awesome Product"
+    click_link stock.id.to_s
+    within('#withdraws') do
+      click_link('Edit')
+    end
+
+    fill_in "Quantity", with: 18
+    click_button "Update Withdraw"
+
+    expect(page).to have_text('Withdraw was successfully updated.')
+    expect(page).to have_text('Remaining Quantity 60.0')
   end
 end
