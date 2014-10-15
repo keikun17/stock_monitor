@@ -14,7 +14,8 @@ class WithdrawsController < ApplicationController
 
   # GET /withdraws/new
   def new
-    @withdraw = Withdraw.new
+    @stock = Stock.find(params[:stock_id])
+    @withdraw = @stock.withdraws.new
   end
 
   # GET /withdraws/1/edit
@@ -28,7 +29,7 @@ class WithdrawsController < ApplicationController
 
     respond_to do |format|
       if @withdraw.save
-        format.html { redirect_to @withdraw, notice: 'Withdraw was successfully created.' }
+        format.html { redirect_to [@withdraw.product, @withdraw.stock], notice: 'Withdraw was successfully created.' }
         format.json { render :show, status: :created, location: @withdraw }
       else
         format.html { render :new }

@@ -8,6 +8,7 @@
         - @withdraw.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.hidden_field :stock_id
   .form-group
     = f.label :quantity, :class => 'col-sm-2 control-label'
     .col-sm-10
