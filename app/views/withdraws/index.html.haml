@@ -9,7 +9,6 @@
     %thead
       %tr
         %th Quantity
-        %th Unit
         %th Date ordered
         %th Arrival date
         %th Remarks
@@ -22,7 +21,6 @@
       - @withdraws.each do |withdraw|
         %tr
           %td= withdraw.quantity
-          %td= withdraw.unit
           %td= withdraw.date_ordered
           %td= withdraw.arrival_date
           %td= withdraw.remarks
