@@ -56,8 +56,9 @@ end
 #
 # Table name: stocks
 #
-#  id         :integer          not null, primary key
-#  product_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  product_id    :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  quantity_unit :string
 #

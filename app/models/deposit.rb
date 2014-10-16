@@ -10,7 +10,6 @@ end
 #
 #  id           :integer          not null, primary key
 #  quantity     :float
-#  unit         :string
 #  date_ordered :datetime
 #  arrival_date :datetime
 #  remarks      :text
