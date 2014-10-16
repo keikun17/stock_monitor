@@ -10,6 +10,9 @@
 
   %h2= @stock.product.name
 
+  = f.label :quantity_unit, class: 'col-sm-2 control-label'
+  .col-sm-10
+    = f.text_field :quantity_unit
 
   = f.hidden_field :product_id
   = f.fields_for :stock_fields do |ff|

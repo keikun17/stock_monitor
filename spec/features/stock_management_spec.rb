@@ -31,11 +31,12 @@ feature "Stock Management" do
     expect(page).to have_text('2')
 
     expect(ar_belt.stocks.count).to eq(initial_product_count + 1)
+    expect(page).to have_text('0.0 meter')
   end
 
   scenario "Viewing a Stock Record with existing deposit and withdraws" do
     product =  create :product, name: 'Awesome Product'
-    stock = create :stock, :with_90_remaining, product_id: product.id
+    stock = create :stock, :with_90_remaining, product_id: product.id, quantity_unit: 'meter'
 
     visit products_path
     click_link "Awesome Product"
@@ -50,7 +51,7 @@ feature "Stock Management" do
 
   scenario "Editing and existing Stock's Deposit"  do
     product =  create :product, name: 'Awesome Product'
-    stock = create :stock, product_id: product.id
+    stock = create :stock, product_id: product.id, quantity_unit: 'meter'
     deposit = create :deposit, quantity: 78, stock: stock
     deposit = create :withdraw, quantity: 8, stock: stock
 
@@ -65,12 +66,12 @@ feature "Stock Management" do
     click_button "Update Deposit"
 
     expect(page).to have_text('Deposit was successfully updated.')
-    expect(page).to have_text('Remaining Quantity 80.0')
+    expect(page).to have_text('Remaining Quantity 80.0 meter')
   end
 
   scenario "Editing an existing Stock's Withdraw"  do
     product =  create :product, name: 'Awesome Product'
-    stock = create :stock, product_id: product.id
+    stock = create :stock, product_id: product.id, quantity_unit: 'meter'
     deposit = create :deposit, quantity: 78, stock: stock
     deposit = create :withdraw, quantity: 8, stock: stock
 
