@@ -21,6 +21,7 @@ FactoryGirl.define do
     trait :with_stock do
       after :create do |product|
         stock = Stock.initialize_fields(product)
+        stock.quantity_unit = 'meter'
         stock.save
 
         stock.update_field_value("Brand", "Pinoy Brand")

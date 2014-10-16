@@ -42,7 +42,7 @@ feature "Stock Management" do
     click_link "Awesome Product"
     click_link stock.id.to_s
 
-    expect(page).to have_text("Remaining Quantity 90.0")
+    expect(page).to have_text("Remaining Quantity 90.0 meter")
     expect(page).to have_text('20.0')
     expect(page).to have_text('30.0')
     expect(page).to have_text('50.0')
@@ -86,6 +86,6 @@ feature "Stock Management" do
     click_button "Update Withdraw"
 
     expect(page).to have_text('Withdraw was successfully updated.')
-    expect(page).to have_text('Remaining Quantity 60.0')
+    expect(page).to have_text('Remaining Quantity 60.0 meter')
   end
 end
