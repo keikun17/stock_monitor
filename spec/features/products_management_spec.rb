@@ -1,10 +1,6 @@
 require "rails_helper"
 
 feature "Products management" do
-  before do
-    create(:product, name: 'Conveyor Belt')
-    create(:product, name: 'Roller')
-  end
 
   scenario "Create Product" do
     visit products_path
@@ -16,7 +12,21 @@ feature "Products management" do
     expect(page).to have_text("Side Skirt")
   end
 
+  scenario "Update Product" do
+    create(:product, name: "Rub Skirt")
+    visit products_path
+    click_link "Edit"
+    fill_in "Name", with: "Rubber Skirt"
+    click_button "Update Product"
+
+    expect(page).to have_text("Product was successfully updated.")
+    expect(page).to have_text("Rubber Skirt")
+  end
+
   scenario "Delete Product" do
+    create(:product, name: 'Conveyor Belt')
+    create(:product, name: 'Roller')
+
     expect(Product.count).to eq(2)
 
     visit products_path
