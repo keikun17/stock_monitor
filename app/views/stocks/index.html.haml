@@ -21,8 +21,10 @@
         %tr
           %td= link_to stock.id, product_stock_path(@product,stock)
           - @product.product_fields.each do |product_field|
-            %td= stock.stock_fields.where(product_field: product_field).first.try(:string_value) || stock.stock_fields.where(product_field: product_field).first.try(:float_value)
-          %td= stock.product
+            %td
+              = stock.stock_fields.where(product_field: product_field).first.try(:string_value) || stock.stock_fields.where(product_field: product_field).first.try(:float_value)
+              = product_field.unit
+          %td= stock.product.name
           %td= link_to 'Show', product_stock_path(@product,stock)
           %td= link_to 'Edit', edit_product_stock_path(@product,stock)
           %td= link_to 'Destroy', product_stock_path(@product,stock), :data => { confirm: 'Are you sure?' }, :method => :delete
