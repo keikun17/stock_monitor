@@ -5,16 +5,8 @@
   = link_to edit_product_stock_path, :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
-  %h1 Show stock
 
 
-=link_to new_deposit_path(stock_id: @stock.id), :class => 'btn btn-primary' do
-  %span.glyphicon.glyphicon-plus
-  Deposit Stock
-
-=link_to new_withdraw_path(stock_id: @stock.id), :class => 'btn btn-primary' do
-  %span.glyphicon.glyphicon-plus
-  Withdraw Stock
 
 %h2
   Remaining Quantity
@@ -38,7 +30,13 @@
 
 .row
   #deposits.col-sm-6
+
+
     %h3 Deposits
+
+    =link_to new_deposit_path(stock_id: @stock.id), :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      Deposit Stock
 
     .table-responsive
       %table.table.table-striped.table-bordered.table-hover
@@ -69,6 +67,12 @@
 
   #withdraws.col-sm-6
     %h3 Withdraws
+
+    .row
+      .col-sm-12
+        =link_to new_withdraw_path(stock_id: @stock.id), :class => 'btn btn-primary' do
+          %span.glyphicon.glyphicon-plus
+          Withdraw Stock
 
     .table-responsive
       %table.table.table-striped.table-bordered.table-hover
