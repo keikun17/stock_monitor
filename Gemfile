@@ -65,4 +65,5 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'guard-rspec', require: false
+  gem 'seed-fu', '~> 2.3'
 end
