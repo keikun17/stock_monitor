@@ -6,8 +6,6 @@
     %span.glyphicon.glyphicon-pencil
     Edit
 
-
-
 %h2
   Remaining Quantity
   = @stock.remaining_quantity
@@ -30,7 +28,6 @@
 
 .row
   #deposits.col-sm-6
-
 
     %h3 Deposits
 
@@ -98,6 +95,3 @@
               %td= link_to 'Show', withdraw
               %td= link_to 'Edit', edit_withdraw_path(withdraw)
               %td= link_to 'Destroy', withdraw, :data => { confirm: 'Are you sure?' }, :method => :delete
-
-
-
