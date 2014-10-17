@@ -6,6 +6,7 @@
 # Seed 1
 Stock.seed do |s|
   s.id = 1
+  s.quantity_unit = 'meter'
   s.product_id = 1
 end
 
@@ -24,6 +25,7 @@ StockField.seed(:id,
 # Seed 2
 Stock.seed do |s|
   s.id = 2
+  s.quantity_unit = 'meter'
   s.product_id = 1
 end
 
