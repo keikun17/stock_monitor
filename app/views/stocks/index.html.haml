@@ -9,6 +9,7 @@
     %thead
       %tr
         %th ID
+        %th Qty
         - @product.product_fields.each do |product_field|
           %th= product_field.name
         %th Product Type
@@ -20,6 +21,9 @@
       - @stocks.each do |stock|
         %tr
           %td= link_to stock.id, product_stock_path(@product,stock)
+          %td
+            = stock.remaining_quantity
+            = stock.quantity_unit
           - @product.product_fields.each do |product_field|
             %td
               = stock.stock_fields.where(product_field: product_field).first.try(:string_value) || stock.stock_fields.where(product_field: product_field).first.try(:float_value)
